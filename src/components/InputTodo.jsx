@@ -10,12 +10,19 @@ const inputAreaStyle = {
 };
 
 const InputTodo = (props) => {
-  const { text, onChange, onClick } = props;
+  const { text, onChange, onClick, disabled } = props;
 
   return (
     <div style={inputAreaStyle}>
-      <input placeholder="TODOを入力" value={text} onChange={onChange} />
-      <button onClick={onClick}>追加</button>
+      <input
+        placeholder="TODOを入力"
+        value={text}
+        onChange={onChange}
+        disabled={disabled}
+      />
+      <button onClick={onClick} disabled={disabled}>
+        追加
+      </button>
     </div>
   );
 };
