@@ -32,6 +32,13 @@ const App = () => {
     newTodos.splice(index, 1);
     setIncompleteTodos(newTodos);
   };
+  const onClickReturnButton = (index) => {
+    const newCompleteTodos = [...completeTodos];
+    newCompleteTodos.splice(index, 1);
+    const newIncompleteTodos = [...incompleteTodos, completeTodos[index]];
+    setIncompleteTodos(newIncompleteTodos);
+    setCompleteTodos(newCompleteTodos);
+  };
 
   return (
     <>
@@ -74,12 +81,18 @@ const App = () => {
       <div className="complete-area">
         <p className="title">完了済のTODO</p>
         <ul>
-          {completeTodos.map((todo) => {
+          {completeTodos.map((todo, idx) => {
             return (
               <li key={todo}>
                 <div className="list-row">
                   <span>{todo}</span>
-                  <button>戻す</button>
+                  <button
+                    onClick={() => {
+                      onClickReturnButton(idx);
+                    }}
+                  >
+                    戻す
+                  </button>
                 </div>
               </li>
             );
