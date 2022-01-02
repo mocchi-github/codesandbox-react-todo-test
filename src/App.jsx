@@ -17,6 +17,16 @@ const App = () => {
     setIncompleteTodos(newTodos);
     setTodoText("");
   };
+  const onClickCompleteButton = (index) => {
+    // 未完了リストから削除
+    const newIncompleteTodos = [...incompleteTodos];
+    newIncompleteTodos.splice(index, 1);
+    // 完了済みリストに追加
+    const newCompleteTodos = [...completeTodos, incompleteTodos[index]];
+
+    setIncompleteTodos(newIncompleteTodos);
+    setCompleteTodos(newCompleteTodos);
+  };
   const onClickDeleteButton = (index) => {
     const newTodos = [...incompleteTodos];
     newTodos.splice(index, 1);
@@ -41,7 +51,13 @@ const App = () => {
               <li key={todo}>
                 <div className="list-row">
                   <span>{todo}</span>
-                  <button>完了</button>
+                  <button
+                    onClick={() => {
+                      onClickCompleteButton(idx);
+                    }}
+                  >
+                    完了
+                  </button>
                   <button
                     onClick={() => {
                       onClickDeleteButton(idx);
