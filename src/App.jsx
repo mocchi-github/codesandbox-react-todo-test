@@ -3,8 +3,8 @@ import "./styles.css";
 
 const App = () => {
   const [todoText, setTodoText] = useState("");
-  const [incompleteTodos, setIncompleteTodos] = useState(["aaa", "bbb"]);
-  const [completeTodos, setCompleteTodos] = useState(["done1", "done2"]);
+  const [incompleteTodos, setIncompleteTodos] = useState([]);
+  const [completeTodos, setCompleteTodos] = useState([]);
 
   const onChangeTodoText = (evevt) => {
     setTodoText(evevt.target.value);
